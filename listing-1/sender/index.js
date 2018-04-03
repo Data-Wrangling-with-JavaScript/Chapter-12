@@ -1,30 +1,42 @@
+//
+// Emulates a 'sender' of data to our Node.js server.
+//
+
 "use strict";
 
 const fs = require('fs');
 const request = require('request-promise');
-const papa = require('papaparse');
+const importCsvFile = require('./toolkit/importCsvFile.js');
 
-//
-// Load example data.
-//
 const location = "brisbanecbd";
-const parsed = papa.parse(fs.readFileSync("./data/brisbanecbd-aq-2014.csv", "utf8"), { dynamicTyping: true, header: true });
-const data = parsed.data;
+const dataFilePath = "../../data/brisbanecbd-aq-2014.csv";
 
-let curIndex = 0;
+const dataSubmitUrl = "http://localhost:3000/data-collection-point"; // URL for our Node.js server.
 
-setInterval(() => { // Every second send a chunk of data to the server.
+importCsvFile(dataFilePath)
+    .then(data => {
+        let curIndex = 0;
 
-        const postData = Object.assign({}, data[curIndex]);
-        curIndex += 1;
+        setInterval(() => { // Every second send a chunk of data to the server.
+        
+                const outgoingData = Object.assign({}, data[curIndex]); // Clone the data so we can modify it.
+                curIndex += 1;
+        
+                outgoingData.Location = location; // Tag the data with a location so that we can differentuate our data sources.
 
-        postData.Location = location; // Tag the data with a location so that we can differentuate our data sources.
+                console.log("Sending data to server!");
+        
+                request.post({
+                    method: "POST",
+                    uri: dataSubmitUrl, 
+                    body: outgoingData,
+                    json: true
+                });
+         
+            }, 1000);
+    })
+    .catch(err => {
+        console.error("An error occured.");
+        console.error(err);
+    });
 
-        request.post({
-            method: "POST",
-            uri: "http://localhost:3000/submit-data", 
-            body: postData,
-            json: true
-        });
- 
-    }, 1000);

@@ -2,17 +2,25 @@
 
 const net = require('net');
 
-const server = net.createServer(socket => {
+const serverHostName = "localhost";
+const serverPortNo = 3030;
+
+const server = net.createServer(socket => {  // Create the socket server for data collection.
 	console.log("Client connected!");
     
-    socket.on('data', function(data) {
+    socket.on('data', incomingJsonData => { // Handle incoming data packets.
+
+        const incomingData = JSON.parse(incomingJsonData); // Deserialize incoming JSON data.
+
         console.log('Received: ');
-        console.log(JSON.parse(data));
+        console.log(incomingData); // Just log out the data received so that we can check that it is coming through ok.
     });
     
-    socket.on('close', function() {
+    socket.on('close', () => { // Callback for when the client closed the connection.
         console.log('Client closed the connection');
     });    
 });
 
-server.listen(1337, '127.0.0.1');
+server.listen(serverPortNo, serverHostName, () => { // Start listening for incoming socket connections.
+    console.log("Waiting for clients to connect.");
+}); 
