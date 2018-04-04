@@ -2,7 +2,7 @@
 
 const net = require('net');
 
-const serverHostName = "localhost";
+const serverHostName = "localhost"; // Server setup details.
 const serverPortNo = 3030;
 
 const server = net.createServer(socket => {  // Create the socket server for data collection.
@@ -19,6 +19,11 @@ const server = net.createServer(socket => {  // Create the socket server for dat
     socket.on('close', () => { // Callback for when the client closed the connection.
         console.log('Client closed the connection');
     });    
+
+    socket.on('error', err => { // Add an error handler, mainly for ECONNRESET when the client abruptly disconnects.
+        console.error("Caught socket error from client.");
+        console.error(err);
+    });
 });
 
 server.listen(serverPortNo, serverHostName, () => { // Start listening for incoming socket connections.

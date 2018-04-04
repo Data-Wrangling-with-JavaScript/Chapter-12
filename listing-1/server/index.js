@@ -6,7 +6,7 @@
 
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
@@ -15,4 +15,6 @@ app.post('/data-collection-point', (req, res) => { // REST API endpoint that rec
     res.sendStatus(200); // Respond to the client with HTTP STATUS 200 (status ok).
 });
 
-app.listen(3000, () => console.log('Data collection point listening on port 3000!'))
+app.listen(3000, () => { // Start the server.
+    console.log('Data collection point listening on port 3000!');
+});
