@@ -12,7 +12,7 @@ const net = require('net');
 const location = "brisbanecbd"; // Location tag for the example data.
 const dataFilePath = "../../data/brisbanecbd-aq-2014.csv"; // CSV file containing example data.
 
-const serverHostName = "localhost"; // Server connection details.
+const serverHostName = "localhost"; // Server connection details
 const serverPortNo = 3030;
 
 const client = new net.Socket();
