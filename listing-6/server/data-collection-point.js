@@ -2,9 +2,7 @@
 
 const eventHub = require('./event-hub.js'); // Include the event hub so we can raise events.
 const net = require('net');
-
-const serverHostName = "localhost"; // Server setup details.
-const serverPortNo = 3030;
+const config = require('./config.js');
 
 function initDataCollectionPoint (incomingDataCollection) { // Function to initialise our data collection point (the database collection is passed in).
 
@@ -40,7 +38,7 @@ function initDataCollectionPoint (incomingDataCollection) { // Function to initi
         });    
     });
             
-    server.listen(serverPortNo, serverHostName, () => { // Start listening for incoming socket connections.
+    server.listen(config.server.portNo, config.server.hostName, () => { // Start listening for incoming socket connections.
         console.log("Waiting for clients to connect.");
     });
 };

@@ -4,14 +4,16 @@
 "use strict";
 
 const eventHub = require('./event-hub.js'); // Include the event hub so we can handle events.
-const smsAlertSystem = require('./sms-alert-system.js'); // Include the SMS alert system so we can send SMS text messages.
+const raiseSmsAlert = require('./sms-alert-system.js'); // Include the SMS alert system so we can send SMS text messages.
+const config = require('./config.js');
 
-const maxSafePM10 = 80; // Set the maximum safe level of PM10 particles in the air before the alert is triggered.
-
-eventHub.on('incoming-data', (id, data) => { // Handle the 'incoming-data' event.
-
-    if (data["PM10 (ug/m^3)"] > maxSafePM10) {
-        smsAlertSystem.raiseAlert("PM10 concentration has exceeded safe levels.");
+eventHub.on('incoming-data', (id, incomingData) => { // Handle the 'incoming-data' event.
+    const pm10Value = incomingData["PM10 (ug/m^3)"];
+    const pm10SafeLimit = config.alertLimits.maxSafePM10;
+    if (pm10Value > pm10SafeLimit) {
+        console.log("Alert triggered!!!!!!!!!!");
+        console.log("Received PM10 value " + pm10Value + ", this has exceeded the safe limit of " + pm10SafeLimit);
+        raiseSmsAlert("PM10 concentration has exceeded safe levels.");
     }
 });
 

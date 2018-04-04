@@ -6,23 +6,19 @@
 
 "use strict";
 
-const accountSid = "<your account sid>";
-const authToken = "<your auth token>";
-
-const toPhoneNumber = "<mobile phone number to receive alerts goes here>";
-const fromPhoneNumber = "<mobile phone number to send alerts goes here>";
+const config = require('./config.js');
 
 // Uncomment this code when you have a Twilio account.
-//const twilioClient = require('twilio')(accountSid, authToken);
+//const twilioClient = require('twilio')(config.twilio.accountSid, config.twilio.authToken);
 
-function raiseAlert (msg) { // Raise an alert via SMS text message.
+function raiseSmsAlert (msg) { // Raise an alert via SMS text message.
 
     console.log("Register for Twilio, then uncomment the following code to send SMS text alerts.");
 
     /*
     return client.messages.create({
-            to: toPhoneNumber,
-            from: fromPhoneNumber,
+            to: config.twilio.toPhoneNumber,
+            from: config.twilio.fromPhoneNumber,
             body: "[ALERT]: " + msg,
         })
         .then(() => {
@@ -34,3 +30,5 @@ function raiseAlert (msg) { // Raise an alert via SMS text message.
         });
     */
 };
+
+module.exports = raiseSmsAlert;

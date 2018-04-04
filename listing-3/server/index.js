@@ -3,7 +3,6 @@
 const net = require('net');
 const config = require('./config.js');
 
-
 const server = net.createServer(socket => {  // Create the socket server for data collection.
 	console.log("Client connected!");
     

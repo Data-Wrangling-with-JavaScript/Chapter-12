@@ -2,9 +2,7 @@
 
 const eventHub = require('./event-hub.js'); // Include the event hub so we can raise events.
 const net = require('net');
-
-const serverHostName = "localhost"; // Server setup details.
-const serverPortNo = 3030;
+const config = require('./config.js');
 
 function initDataCollectionPoint (incomingDataCollection) { // Function to initialise our data collection point (the database collection is passed in).
 
@@ -14,13 +12,11 @@ function initDataCollectionPoint (incomingDataCollection) { // Function to initi
         console.log("Client connected!");
         
         socket.on('data', incomingJsonData => { // Handle incoming data packets.
-            console.log("Storing data to database.");
-
             const incomingData = JSON.parse(incomingJsonData); // Deserialize incoming JSON data.
 
             incomingDataCollection.insertOne(incomingData) // Insert data into the database.
                 .then(doc => { // The data was inserted successfully.
-                    console.log("Data was inserted, raising event 'incoming-data'");
+                    console.log("Data was received and stored.");
 
                     eventHub.emit('incoming-data', doc.insertedCount, incomingData); // Raise the 'incoming-data' event.
                 })
@@ -40,7 +36,7 @@ function initDataCollectionPoint (incomingDataCollection) { // Function to initi
         });    
     });
             
-    server.listen(serverPortNo, serverHostName, () => { // Start listening for incoming socket connections.
+    server.listen(config.server.portNo, config.server.hostName, () => { // Start listening for incoming socket connections.
         console.log("Waiting for clients to connect.");
     });
 };
