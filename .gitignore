@@ -10,3 +10,4 @@ listing-6/client/node_modules/
 listing-6/server/node_modules/
 listing-6/server/output/
 listing-3/client/node_modules/
+*.bak

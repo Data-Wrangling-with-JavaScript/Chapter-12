@@ -12,13 +12,11 @@ function initDataCollectionPoint (incomingDataCollection) { // Function to initi
         console.log("Client connected!");
         
         socket.on('data', incomingJsonData => { // Handle incoming data packets.
-            console.log("Storing data to database.");
-
             const incomingData = JSON.parse(incomingJsonData); // Deserialize incoming JSON data.
 
             incomingDataCollection.insertOne(incomingData) // Insert data into the database.
                 .then(doc => { // The data was inserted successfully.
-                    console.log("Data was inserted, raising event 'incoming-data'");
+                    console.log("Data was received and stored.");
 
                     eventHub.emit('incoming-data', doc.insertedCount, incomingData); // Raise the 'incoming-data' event.
                 })
