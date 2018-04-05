@@ -20,7 +20,7 @@ function initDataCollectionPoint (db) { // Function to initialise our data colle
                 .then(doc => { // The data was inserted successfully.
                     console.log("Data was received and stored.");
 
-                    eventHub.emit('incoming-data', doc.insertedCount, incomingData); // Raise the 'incoming-data' event.
+                    eventHub.emit("incoming-data", incomingData); // Raise the 'incoming-data' event and pass through the data.
                 })
                 .catch(err => { // Something went wrong while inserting the data.
                     console.error("Error inserting data.");

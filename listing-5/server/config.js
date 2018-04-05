@@ -23,7 +23,7 @@ module.exports = {
         //
         // Set the maximum safe level of PM10 particles in the air before the alert is triggered.
         //
-        maxSafePM10: 80 
+        maxSafePM10: 80 // Air quality is deemed to be 'poor' when PM10 is 80 or greater.
     },    
 
     twilio: { // Twilio SMS API configuration - add details here for your own Twilio account.

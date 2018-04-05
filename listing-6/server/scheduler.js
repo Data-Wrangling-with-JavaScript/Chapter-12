@@ -5,7 +5,7 @@
 "use strict";
 
 const eventHub = require('./event-hub.js'); // Include the event hub so we can raise events.
-const cron = require('cron');
+const cron = require('cron'); // Include the cron library for scheduled time-based tasks.
 const config = require('./config.js');
 
 function generateReport () { // Job to execute on schedule.

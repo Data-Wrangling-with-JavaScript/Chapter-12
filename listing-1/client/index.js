@@ -11,7 +11,7 @@ const importCsvFile = require('./toolkit/importCsvFile.js');
 const location = "brisbanecbd"; // Location tag for the example data.
 const dataFilePath = "../../data/brisbanecbd-aq-2014.csv"; // CSV file containing example data.
 
-const dataSubmitUrl = "http://localhost:3000/data-collection-point"; // URL for our Node.js server.
+const dataSubmitUrl = "http://localhost:3000/data-collection-point"; // URL for submitting data to our Node.js server.
 
 importCsvFile(dataFilePath) // Load the example data from the CSV file.
     .then(data => {

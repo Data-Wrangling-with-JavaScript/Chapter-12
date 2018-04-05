@@ -10,7 +10,7 @@ mongodb.MongoClient.connect(config.database.host) // Open connection to the data
         const db = client.db(config.database.name);        
 
         // Now we can initialise sub-systems that depend on the database.
-        initDataCollectionPoint(db);
+        initDataCollectionPoint(db); // Initialise our data collection point that depends on the database.
     })
     .catch(err => {
         console.error("An error occurred during system initialisation.");

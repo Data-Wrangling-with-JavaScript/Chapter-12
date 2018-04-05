@@ -4,10 +4,10 @@ const mongodb = require('mongodb');
 const net = require('net');
 const config = require('./config.js');
 
-mongodb.MongoClient.connect(config.database.host) // Open connection to the database.
+mongodb.MongoClient.connect(config.database.host) // Open connection to the database server.
     .then(client => {
-        const db = client.db(config.database.name);
-        const collection = db.collection("incoming");
+        const db = client.db(config.database.name); // Retrieve the database we are using.
+        const collection = db.collection("incoming"); // Retrieve the MongoDB collection where we will store incoming data.
 
         console.log("Connected to db");
 
@@ -19,8 +19,8 @@ mongodb.MongoClient.connect(config.database.host) // Open connection to the data
 
                 const incomingData = JSON.parse(incomingJsonData); // Deserialize incoming JSON data.
 
-                collection.insertOne(incomingData) // Insert data into the database.
-                .then(doc => { // The data was inserted successfully.
+                collection.insertOne(incomingData) // Insert incoming data into the database.
+                    .then(doc => { // The data was inserted successfully.
                         console.log("Data was inserted.");
                     })
                     .catch(err => { // Something went wrong while inserting the data.

@@ -1,7 +1,5 @@
 "use strict";
 
-//todo: need socket io.
-
 //
 // Render a chart to a particular element on the page.
 //
@@ -38,9 +36,6 @@ $(function () {
             var chart = renderChart("#chart", chartData); // Do the initial render of the chart.
 
             socket.on("incoming-data", function (incomingDataRecord) { // Handling data that is incoming over the socket IO connection.
-                console.log('Got data:'); //fio:
-                console.log(incomingDataRecord);
-
                 chartData.json.push(incomingDataRecord); // Add the incoming data to our existing chart data.
                 while (chartData.json.length > 24) { // Defensive programming!
                     chartData.json.shift(); // Remove the oldest data records.
