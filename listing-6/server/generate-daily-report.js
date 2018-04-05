@@ -22,7 +22,7 @@ function generateDailyReport (incomingDataCollection) { // Function to initialis
         .then(data => {
             const chartData = { // Prepare the data to display in the chart.
                 xFormat: "%d/%m/%Y %H:%M", // Format of the Date column, used by C3 to parse the data series for the X axis.
-                json: data,
+                json: data.reverse(), // Reverse the data so it is in chronological order for display in the chart.
                 keys: {
                     x: "Date",  
                     value: [

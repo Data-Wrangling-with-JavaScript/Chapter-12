@@ -11,3 +11,5 @@ listing-6/server/node_modules/
 listing-6/server/output/
 listing-3/client/node_modules/
 *.bak
+listing-7/server/node_modules/
+listing-7/client/node_modules/
