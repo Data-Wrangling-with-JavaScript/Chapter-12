@@ -11,7 +11,6 @@ const Nightmare = require('nightmare');
 //
 function captureReport (urlToCapture, captureElementSelector, outputPdfFilePath) {
 
-    //fio: remove show.
     const nightmare = new Nightmare(); // Create an Nightmare instance.
     return nightmare.goto(urlToCapture) // Point the browser at the requested web page.
         .wait(captureElementSelector) // Wait until the specified HTML element appears on the screen. 

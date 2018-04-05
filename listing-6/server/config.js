@@ -25,5 +25,16 @@ module.exports = {
 
         // Uncomment this for daily report generation only once per day, Monday through Friday, at 6am.
         //schedule:  "00 00 06 * * 1-5", 
+
+        recipients: [ // Email recipients to be sent the automatically generated daily report.
+            "<add your email addresses here>"
+        ]
     },
+
+    smtp: {
+        hostname: "smtp.mailgun.org",
+        username: "<add your smtp email username here>",
+        password: "<add your smtp email password here>",
+        from: "<add your from and reply-to email address here>"
+    }
 };
