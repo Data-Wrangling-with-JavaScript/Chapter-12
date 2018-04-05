@@ -8,12 +8,13 @@ const config = require('./config.js');
 
 mongodb.MongoClient.connect(config.database.host) // Open connection to the database.
     .then(client => {
+        console.log("Connected to db");
+
         const db = client.db(config.database.name);
-        const incomingDataCollection = db.collection("incoming");
 
         // Now we can initialise sub-systems that depend on the database.
-        initDataCollectionPoint(incomingDataCollection);
-        initGenerateDailyReport(incomingDataCollection);
+        initDataCollectionPoint(db);
+        initGenerateDailyReport(db);
     })
     .catch(err => {
         console.error("An error occurred during system initialisation.");

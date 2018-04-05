@@ -9,9 +9,11 @@ const generateReport = require('./toolkit/generate-report.js');
 const sendEmail = require('./send-email.js');
 const config = require('./config.js');
 
-function generateDailyReport (incomingDataCollection) { // Function to initialise our report generation job (the database collection is passed in).
+function generateDailyReport (db) { // Function to initialise our report generation job (the database collection is passed in).
 
     console.log("Generating daily report..."); 
+
+    const incomingDataCollection = db.collection("incoming");
 
     const reportFilePath = "./output/daily-report.pdf"; // The file path for the report we are outputting.
 

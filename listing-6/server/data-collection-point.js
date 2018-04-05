@@ -4,9 +4,9 @@ const eventHub = require('./event-hub.js'); // Include the event hub so we can r
 const net = require('net');
 const config = require('./config.js');
 
-function initDataCollectionPoint (incomingDataCollection) { // Function to initialise our data collection point (the database collection is passed in).
+function initDataCollectionPoint (db) { // Function to initialise our data collection point (the database collection is passed in).
 
-    console.log("Connected to db");
+    const incomingDataCollection = db.collection("incoming");
 
     const server = net.createServer(socket => { // Create the socket server for data collection.
         console.log("Client connected!");
