@@ -13,3 +13,7 @@ listing-3/client/node_modules/
 *.bak
 listing-7/server/node_modules/
 listing-7/client/node_modules/
+listing-7/server/public/bower_components/
+listing-8/client/node_modules/
+listing-8/server/node_modules/
+listing-8/server/public/bower_components/

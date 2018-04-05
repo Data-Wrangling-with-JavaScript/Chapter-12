@@ -1,0 +1,28 @@
+
+body {
+    background: white;
+}
+
+/*
+This class defines page in the report.
+*/
+.page {
+    /*
+    Always insert a page break before any element with the page class.
+    */
+    page-break-before: always;
+
+    /*
+    Width and height of a page in centimetres.
+    These values match the A4 page specification, but in landscape orientation.
+    */
+    width: 29.7cm;
+    height: 21cm;
+}
+
+/*
+Make the output image look better.
+*/
+svg {
+    padding: 5px;
+}
