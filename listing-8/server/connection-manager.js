@@ -19,7 +19,7 @@ function onConnectionClosed (closedSocket) { // Function to call when a socket I
     }
 };
 
-eventHub.on("incoming-data", (id, incomingData) => {
+eventHub.on("incoming-data", incomingData => {
     for (let socketIndex = 0; socketIndex < openSockets.length; ++socketIndex) { // For each web app that is connected...
         const socket = openSockets[socketIndex];
         socket.emit("incoming-data", incomingData); // Forward the incoming data to the web app.
