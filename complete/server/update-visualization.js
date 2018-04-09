@@ -1,5 +1,6 @@
 //
-// This file manages the connections to the web-app and forwards incoming data to the live visualization via the socket IO connection.
+// This module listens for the 'incoming-data' event and propagates the data to any web app (live visualization)
+// that happens to be currently connected.
 //
 
 "use strict";

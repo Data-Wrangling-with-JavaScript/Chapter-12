@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Live data visualization</title>
+
+        <link href="bower_components/c3/c3.css" rel="stylesheet">
+        <link href="app.css" rel="stylesheet">
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/d3/d3.js"></script>
+        <script src="bower_components/c3/c3.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <div>No need to refresh this web page, the chart automatically updates as the data flows through.</div>
+        <div id='chart'></div>        
+    </body>
+</html>

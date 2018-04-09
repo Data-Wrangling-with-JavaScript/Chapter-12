@@ -17,3 +17,8 @@ listing-7/server/public/bower_components/
 listing-8/client/node_modules/
 listing-8/server/node_modules/
 listing-8/server/public/bower_components/
+old-listing-7/
+complete/client/node_modules/
+complete/server/node_modules/
+complete/server/public/bower_components/
+complete/server/output/
