@@ -1,6 +1,6 @@
 "use strict";
 
-var events = require('events');
-var eventHub = new events.EventEmitter();
+const events = require('events');
+const eventHub = new events.EventEmitter();
 
 module.exports = eventHub;

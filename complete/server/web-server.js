@@ -16,8 +16,8 @@ function startWebServer (db) { // Helper function to start our web server to hos
 
     const app = express();
 
-    var httpServer = http.Server(app);
-    var socketIOServer = socketIO(httpServer);    
+    const httpServer = http.Server(app);
+    const socketIOServer = socketIO(httpServer);    
     
     const staticFilesPath = path.join(__dirname, "public");
     const staticFilesMiddleWare = express.static(staticFilesPath);

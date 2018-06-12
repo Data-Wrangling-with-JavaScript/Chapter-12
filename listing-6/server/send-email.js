@@ -7,7 +7,7 @@
 const nodemailer = require('nodemailer');
 const config = require('./config.js');
 
-var transport = nodemailer.createTransport({ // Configure nodemailer and create a 'transport'.
+const transport = nodemailer.createTransport({ // Configure nodemailer and create a 'transport'.
     service: "smtp",
     host: config.smtp.hostname,
     secure: true,

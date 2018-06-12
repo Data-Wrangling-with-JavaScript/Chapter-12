@@ -9,7 +9,7 @@ const config = require('./config.js');
 
 /* Uncomment this code once you have Mailgun setup and have added your details to config.js.
 
-var transport = nodemailer.createTransport({ // Configure nodemailer and create a 'transport'.
+const transport = nodemailer.createTransport({ // Configure nodemailer and create a 'transport'.
     service: "smtp",
     host: config.smtp.hostname,
     secure: true,
