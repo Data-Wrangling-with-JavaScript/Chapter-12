@@ -42,6 +42,6 @@ importCsvFile(dataFilePath) // Load the example data from the CSV file.
             }, 1000);
     })
     .catch(err => {
-        console.error("An error occured.");
+        console.error("An error occurred.");
         console.error(err);
     });

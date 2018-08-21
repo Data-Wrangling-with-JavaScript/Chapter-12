@@ -33,7 +33,7 @@ function startWebServer (db) { // Helper function to start our web server to hos
                 res.json(data); // Send the data to the web app.
             })
             .catch(err => {
-                console.error("An error occured.");
+                console.error("An error occurred.");
                 console.error(err);
 
                 res.sendStatus(500); // Tell the web app that something went wrong.
