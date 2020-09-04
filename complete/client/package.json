@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "papaparse": "4.3.7",
+    "papaparse": "5.2.0",
     "request": "2.85.0",
     "request-promise": "4.2.2"
   }
